@@ -17,5 +17,5 @@
 .carousel {
     left: 0;
     width: 100%;
-    position: fixed; /* Add spacing to separate from Header */
+    position: fixed;
 }

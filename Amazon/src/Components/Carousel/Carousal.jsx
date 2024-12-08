@@ -19,6 +19,7 @@ function CarouselEffect() {
           </div>
         ))}
       </Carousel>
+      <div className='hero_img'></div>
     </div>
   );
 }
