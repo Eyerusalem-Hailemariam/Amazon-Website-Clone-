@@ -32,7 +32,7 @@ function Header() {
 
         {/* Search Bar */}
         <div className="search">
-          <select name="categories" id="categories">
+          <select name="categories">
             <option value="">All</option>
           </select>
           <input type="text" placeholder="Search product" />
@@ -53,30 +53,27 @@ function Header() {
           </a>
 
           {/* Account Links */}
-          <a href="/signin" >
-            <div>
-              <p>Sign In</p>
-              <span>Account & Lists</span>
-            </div>
+          <a href="/signin">
+            <p>Sign In</p>
+            <span>Account & Lists</span>
           </a>
           <a href="/orders">
-            <div>
-              <p>Returns</p>
-              <span>& Orders</span>
-            </div>
+            <p>Returns</p>
+            <span>& Orders</span>
           </a>
 
           {/* Cart */}
           <a href="/cart" className="cart">
             <BiCart />
-            <span>2</span> {/* Example cart item count */}
+            <span>2</span>
           </a>
         </div>
       </section>
       <br></br>
-      <LowerHeader/>
+      <LowerHeader />
     </>
   );
 }
 
 export default Header;
+
