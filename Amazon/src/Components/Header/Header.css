@@ -175,7 +175,11 @@ html, body {
     align-items: center;
     z-index: 5;
 }
-
+.fixed {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 .lower_container ul {
     display: flex;
     list-style: none;

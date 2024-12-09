@@ -34,7 +34,7 @@ function Results() {
         <div className="products-container">
       {results.length > 0 ? (
           results.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product}renderdescription= {false} renderAdd={true} />
           ))
       ) : (
           <p style={{ textAlign: "center" }}>No products found for this category.</p>
