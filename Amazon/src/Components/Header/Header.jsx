@@ -60,7 +60,7 @@ function Header() {
           </Link>
 
           {/* Account Links */}
-          <Link to="/signin">
+          <Link to="/auth">
             <p>Sign In</p>
             <span>Account & Lists</span>
           </Link>
