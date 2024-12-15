@@ -1,18 +1,27 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { SlLocationPin } from "react-icons/sl";
 import { BiCart } from "react-icons/bi";
 import "./Header.css";
 import LowerHeader from "./LowerHeader";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
+import { auth } from "../../Utility/firebase"; 
 
 function Header() {
-  const [state, dispatch] = useContext(DataContext);
-  const { basket } = state;
-  const totalItem =basket?.reduce((amount, item)=> {
-    return item.amount + amount
-  }, 0)
+  const [{ user, basket }] = useContext(DataContext);
+
+  
+  const totalItem = basket?.reduce((amount, item) => item.amount + amount, 0) || 0;
+
+  const handleSignOut = () => {
+    if (auth) {
+      auth.signOut();
+    } else {
+      console.error("Auth module is not available.");
+    }
+  };
+
   return (
     <section className="fixed">
       <section className="header_container">
@@ -60,10 +69,23 @@ function Header() {
           </Link>
 
           {/* Account Links */}
-          <Link to="/auth">
-            <p>Sign In</p>
-            <span>Account & Lists</span>
+          <Link to={!user && "/auth"}>
+            <div>
+              {user ? (
+                <>
+                  <p>Hello, {user?.email?.split("@")[0]}</p>
+                  <span onClick={handleSignOut}>Sign Out</span>
+                </>
+              ) : (
+                <>
+                  <p>Sign In</p>
+                  <span>Account & Lists</span>
+                </>
+              )}
+            </div>
           </Link>
+
+          {/* Orders */}
           <Link to="/orders">
             <p>Returns</p>
             <span>& Orders</span>
@@ -76,11 +98,10 @@ function Header() {
           </Link>
         </div>
       </section>
-      <br></br>
+      <br />
       <LowerHeader />
     </section>
   );
 }
 
 export default Header;
-
