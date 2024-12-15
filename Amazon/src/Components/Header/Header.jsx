@@ -35,7 +35,6 @@ function Header() {
           </Link>
         </div>
 
-        {/* Delivery Section */}
         <div className="delivery">
           <span>
             <SlLocationPin />
@@ -55,9 +54,7 @@ function Header() {
           <IoIosSearch size={25} />
         </div>
 
-        {/* Right Links */}
         <div className="right_links">
-          {/* Language */}
           <Link to="#" className="language">
             <img
               src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
