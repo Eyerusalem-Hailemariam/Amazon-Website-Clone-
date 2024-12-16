@@ -11,14 +11,10 @@ function Product() {
     useEffect(() => {
         setisLoading(true);
         axios
-            .get('https://fakestoreapi.com/products')
-            .then((res) => {
-                console.log("API Response:", res.data);
-                setProducts(res.data);
-                setisLoading(false);
-            })
-            .catch((err) => console.error("Error fetching products:", err))
-            .finally(() => setisLoading(false)); 
+        .get('https://fakestoreapi.com/products')
+        .then((res) => setProducts(res.data))
+        .catch((err) => console.error(err))
+        .finally(() => setisLoading(false)); 
     }, []);
 
     return (

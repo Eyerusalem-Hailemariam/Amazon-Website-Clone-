@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-function CategoryCard({ data }) {
+const CategoryCard = React.memo(({ data }) => {
   console.log(data);
   return (
     <div className='category'>
@@ -14,6 +14,6 @@ function CategoryCard({ data }) {
       </Link>
     </div>
   );
-}
+});
 
 export default CategoryCard;
