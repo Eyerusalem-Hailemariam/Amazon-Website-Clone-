@@ -16,3 +16,7 @@
 .flex h3 {
     min-width: 300px;
 }
+.payment_card_container {
+    max-width: 350px;
+    width: 100%;
+}
