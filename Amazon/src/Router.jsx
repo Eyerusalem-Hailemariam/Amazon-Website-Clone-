@@ -20,7 +20,9 @@ function PaymentWithStripe() {
   );
 }
 
+
 function Routing() {
+
   return (
     <Router>
       <Routes>
