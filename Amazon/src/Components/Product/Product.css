@@ -71,8 +71,8 @@
 }
 
 .products_flexed {
-    height: 50vh;
-    margin-top: 100px;
+     /* height: 50vh; */
+     margin-top: 100px; 
 }
 
 .products_flexed img {
