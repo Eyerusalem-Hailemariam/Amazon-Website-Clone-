@@ -7,11 +7,18 @@ import ProductCard from '../../Components/Product/ProductCard'
 import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 import CurrencyFormat from '../../Components/CurrencyFormat/CurrencyFormat'
 import { axiosInstance } from '../../Api/axios'
-
+import { ClipLoader } from 'react-spinners'
+import { db } from '../../Utility/firebase'
+import { useNavigate} from 'react-router-dom';
+import Orders from '../Orders/Orders'
 function Payment() {
 
   const [{user, basket}] = useContext(DataContext);
+  const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
+  const stripe = useStripe();
+  const elements = useElements();
+  const navigate = useNavigate();
   const totalItem = basket?.reduce((amount, item) => item.amount + amount, 0) || 0;
   const total = basket.reduce((amount, item) => item.price * item.amount + amount, 0);
 
@@ -25,18 +32,32 @@ e?.error?.message ? setError(e.error.message) : setError('Please enter a valid c
 const handlePayment = async (e) => {
 e.preventDefault();
 try {
+  setProcessing(true);
 const response = await axiosInstance({
   method: 'POST',
   url: `/payment/create?total=${total * 100}`
 })
 console.log(response.data)
-} catch(error){
-  if (error.response){
-    setError(error.response.data.message)
-  } else {
-    setError(error.message)
+const clientSecret = response.data?.clientSecret;
+const { paymentIntent } =  await stripe.confirmCardPayment(
+  clientSecret,
+  {
+    payment_method: {
+      card: elements.getElement(CardElement)
+    }
+  }
+)
 
-}
+await db.collection("users").doc(user.uid).collection("orders").doc(paymentIntent.id).set({
+  basket: basket,
+  amount: paymentIntent.amount,
+  created: paymentIntent.created,
+});
+
+setProcessing(false);
+navigate("/orders", { state: { msg: "you have placed new Order"}});
+} catch(error){
+   setProcessing(false);
 }}
   return (
     <LayOut>
@@ -78,11 +99,18 @@ console.log(response.data)
         <p>Total Order |</p> <CurrencyFormat amount={total} />
       </span>
         </div>
-        <button type='submit'>Pay Now</button>
+        <button type='submit'>
+          {processing ? (
+            <div className='loading'>
+            <ClipLoader color='grey' size={12}/>
+            <p>Please Wait ....</p>
+            </div>
+          ): "Pay Now"
+          }
+         </button>
     </div>
     </form>
       </div>
-      
     </div>
       </div>
     </section>
