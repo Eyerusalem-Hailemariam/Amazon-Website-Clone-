@@ -13,7 +13,7 @@ import { useNavigate} from 'react-router-dom';
 import Orders from '../Orders/Orders'
 function Payment() {
 
-  const [{user, basket}] = useContext(DataContext);
+  const [{user, basket}, dispatch] = useContext(DataContext);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
   const stripe = useStripe();
@@ -53,7 +53,8 @@ await db.collection("users").doc(user.uid).collection("orders").doc(paymentInten
   amount: paymentIntent.amount,
   created: paymentIntent.created,
 });
-
+//making the basket empty
+dispatch({type: "EMPTY_BASKET"});
 setProcessing(false);
 navigate("/orders", { state: { msg: "you have placed new Order"}});
 } catch(error){
