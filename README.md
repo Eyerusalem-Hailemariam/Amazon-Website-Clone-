@@ -1,4 +1,4 @@
-###Responsive E-Commerce Web Application 🌐
+###Responsive E-Commerce Web Application 🌐/n
 A responsive e-commerce web application inspired by Amazon, built using React. This project replicates key features of an online shopping platform, offering a seamless user experience across devices.
 
 🚀 Features
