@@ -1,4 +1,5 @@
-###Responsive E-Commerce Web Application 🌐/n
+###Responsive E-Commerce Web Application 🌐
+
 A responsive e-commerce web application inspired by Amazon, built using React. This project replicates key features of an online shopping platform, offering a seamless user experience across devices.
 
 🚀 Features
@@ -40,7 +41,7 @@ REACT_APP_FIREBASE_API_KEY=your-api-key
 REACT_APP_FIREBASE_AUTH_DOMAIN=your-auth-domain
 REACT_APP_FIREBASE_PROJECT_ID=your-project-id
 Start the development server:
-
 npm start
+
 🚀 Deployment
 The application is deployed on Firebase Hosting. 
