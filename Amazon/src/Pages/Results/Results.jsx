@@ -5,6 +5,7 @@ import { productUrl } from "../../Api/endPoints";
 import axios from "axios";
 import ProductCard from "../../Components/Product/ProductCard";
 import Loading from "../../Components/Loading/Loading";
+import "./Results.css";
 
 function Results() {
   const [results, setResults] = useState([]); 
@@ -28,18 +29,21 @@ function Results() {
     <>
      {
       isLoading ? (<Loading/>) : (  <LayOut>
+        <section>
         <h1 style={{ padding: "30px" }}>Results</h1>
         <p style={{ padding: "30px" }}>Category / {categoryName}</p>
         <br />
-        <div className="products-container">
+        <div className="product_container">
       {results.length > 0 ? (
           results.map((product) => (
-              <ProductCard key={product.id} product={product}renderdescription= {false} renderAdd={true} />
+              <ProductCard key={product.id} product={product} renderdescription= {false} renderAdd={true} />
           ))
       ) : (
           <p style={{ textAlign: "center" }}>No products found for this category.</p>
       )}
   </div>
+        </section>
+        
       </LayOut>)
      }
     </>

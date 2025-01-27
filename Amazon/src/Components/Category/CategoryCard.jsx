@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import './Category.css';
 const CategoryCard = React.memo(({ data }) => {
   console.log(data);
   return (

@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     place-items: center;
-    margin-top: 20%;
+    margin-top: 30%;
   }
   
   .category {
@@ -14,16 +14,20 @@
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     margin: 20px;
   }
   
   .category img {
-    width: 100px;
-    object-fit: contain;
-    max-height: 250px;
-    padding: 0px 1px;
-  }
+    width: 150px; 
+    height: 100px; 
+    object-fit: cover; 
+    padding: 5px; 
+    margin: 5px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+}
+
   
   .category a {
     text-decoration: none;

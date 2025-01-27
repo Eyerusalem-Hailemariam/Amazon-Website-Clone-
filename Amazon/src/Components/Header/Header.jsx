@@ -96,6 +96,8 @@ function Header() {
         </div>
       </section>
       <br />
+      <br/>
+      
       <LowerHeader />
     </section>
   );
